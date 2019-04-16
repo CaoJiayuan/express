@@ -6,6 +6,7 @@ use Nerio\Express\Drivers\SimpleClient;
 
 /**
  * @author caojiayuan
+ * @mixin KdNiaoExpress
  */
 class ExpressManager
 {
