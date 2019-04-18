@@ -1,6 +1,7 @@
 <?php namespace Nerio\Express;
 
 
+use Nerio\Express\Drivers\AliAppExpress;
 use Nerio\Express\Drivers\KdNiaoExpress;
 use Nerio\Express\Drivers\SimpleClient;
 
@@ -30,6 +31,10 @@ class ExpressManager
 
         $manager->register('kdniao', function ($config) {
             return new KdNiaoExpress($config['ebussionsid'], $config['appKey']);
+        });
+
+        $manager->register('ali', function ($config) {
+            return new AliAppExpress($config['baseUri'], $config['appCode']);
         });
 
         return $manager;
