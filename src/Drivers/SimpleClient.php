@@ -66,9 +66,10 @@ abstract class SimpleClient implements Express
 
     abstract protected function withData($deliverNo, $code): array;
 
-    protected function request($data)
+    protected function request($data, $path = null)
     {
-        $response = $this->guzzle->request($this->method, $this->path, $this->withOptions($data));
+        $path || $path = $this->path;
+        $response = $this->guzzle->request($this->method, $path, $this->withOptions($data));
 
         return $this->handleResponseData($this->parseResponse($response));
     }
@@ -85,5 +86,10 @@ abstract class SimpleClient implements Express
     protected function parseResponse(ResponseInterface $response)
     {
         return json_decode($response->getBody(), true);
+    }
+
+    public function delivers()
+    {
+        return [];
     }
 }

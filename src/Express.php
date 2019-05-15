@@ -9,4 +9,5 @@ namespace Nerio\Express;
 interface Express
 {
     public function query($deliverNo, $code = null);
+    public function delivers();
 }
